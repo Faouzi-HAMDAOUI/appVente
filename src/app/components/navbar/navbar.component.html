@@ -1,0 +1,67 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false">
+
+    <!-- Navbar brand -->
+    <mdb-navbar-brand><a class="navbar-brand" href="#">Ventes Flash</a></mdb-navbar-brand>
+  
+    <!-- Collapsible content -->
+    <links>
+  
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link waves-light" routerLink="/" mdbWavesEffect>Accueil<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-light" routerLink="/products"  mdbWavesEffect>Tous les produits</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a class="nav-link waves-light" routerLink="/home-user"  mdbWavesEffect>Mes produits</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-light" routerLink="/about"  mdbWavesEffect>A propos</a>
+        </li>
+  
+      </ul>
+      <!-- Links -->
+  
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a class="nav-link" routerLink="/profil">
+            <mdb-icon fas icon="user" mdbDropdownToggle ></mdb-icon>
+            {{ userLoggedIn }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <mdb-icon fab icon="facebook"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <mdb-icon fab icon="google-plus"></mdb-icon>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <div class="btn-group" mdbDropdown>
+              <mdb-icon fas icon="user" mdbDropdownToggle *ngIf="!isLoggedIn"></mdb-icon>
+              <mdb-icon fas icon="sign-out-alt" mdbDropdownToggle *ngIf="isLoggedIn" (click)="onLogAout()"></mdb-icon>
+              <div class="dropdown-menu dropdown-menu-right dropdown-primary" *ngIf="!isLoggedIn">
+                <a class="dropdown-item" >Action</a>
+                <a class="dropdown-item"  routerLink="/login" >Connectez-vous</a>
+                <a class="dropdown-item"  routerLink="/register" >Inscrivez-vous</a>
+                <div class="divider dropdown-divider"></div>
+                <a class="dropdown-item"  routerLink="/condition" >Condition d'utilisation</a>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </links>
+    <!-- Collapsible content -->
+  
+  </mdb-navbar>
+  <!--/.Navbar-->
+
+  

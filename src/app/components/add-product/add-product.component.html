@@ -1,0 +1,82 @@
+
+<div class="row">
+    <div class="col-md-10">
+        <form #formProduct="ngForm" (ngSubmit)="onSubmit()" > 
+            <!-- la marque de produit -->
+            <label>Selection votre marque</label>
+              <select class="custom-select" multiple name="mark" id="mark" [(ngModel)]="product.mark">
+                <option value="Television">Television</option>
+                <option value="Ordinateur portable">Ordinateur portable</option>
+                <option value="Imprimante">Imprimante</option>
+                <option value="Machine a lavée">Machine a lavée</option>
+                <option value="Machine a café">Machine a café</option>
+                <option value="Mixeur">Mixeur</option>
+                <option value="Frigo">Frigo</option>
+                <option value="Table">Table</option>
+              </select>
+            <!-- name of product  -->
+            <div class="md-form input-group input-group-lg">
+              <input placeholder="noms de votre produit" type="text" class="form-control" 
+              aria-label="noms de votre produit" name="name"
+              [(ngModel)]="product.name"
+              #nameProduct="ngModel"
+              [ngClass]="{'is-invalid': nameProduct.errors && nameProduct.touched }"
+              required minlength="3" 
+              >
+              <div [hidden]="!nameProduct.errors?.required" class="invalid-feedback">
+                name is required 
+             </div>
+             <div [hidden]="!nameProduct.errors?.minlength" class="invalid-feedback">
+                 Must be at least 2 characters
+              </div>
+            </div>
+            <!-- price of product  -->
+            <div class="md-form input-group input-group-lg">
+                <input placeholder="prix de votre produit" type="text" class="form-control" 
+                aria-label="prix de votre produit" name="price"
+                [(ngModel)]="product.price"
+                #priceProduct="ngModel"
+                [ngClass]="{'is-invalid': priceProduct.errors && priceProduct.touched }"
+                required minlength="1" 
+                >
+                <div [hidden]="!priceProduct.errors?.required" class="invalid-feedback">
+                  name is required 
+               </div>
+               <div [hidden]="!priceProduct.errors?.minlength" class="invalid-feedback">
+                   Must be at least 2 characters
+                </div>
+              </div>
+              <!-- la date de mise en ligne  -->
+              <div class="md-form input-group input-group-lg">
+                <input placeholder="date de mise en ligne  de votre produit" type="date" class="form-control" 
+                aria-label="date de mise en ligne de votre produit" name="date" id="date" [(ngModel)]="product.date">
+                </div>
+
+                <!-- description of product  -->
+            <div class="md-form input-group input-group-lg">
+                <textarea placeholder="la description de votre produit" type="text" class="form-control" 
+                aria-label="la description de votre produit" name="description"
+                [(ngModel)]="product.description"
+                #descriptionProduct="ngModel"
+                [ngClass]="{'is-invalid': descriptionProduct.errors && descriptionProduct.touched }"
+                required minlength="1" 
+                >
+                </textarea>
+                <div [hidden]="!descriptionProduct.errors?.required" class="invalid-feedback">
+                  name is required 
+               </div>
+               <div [hidden]="!descriptionProduct.errors?.minlength" class="invalid-feedback">
+                   Must be at least 2 characters
+                </div>
+              </div>
+            <!-- picture of product -->
+            <div class="md-form input-group input-group-lg">
+                <input placeholder="l'image de votre produit" type="file" class="form-control" 
+                aria-label="l'image de votre produit" name="picture"
+                >
+              </div>
+
+              <button class=" btn btn-primary btn-block" type="submit" [disabled]="!formProduct.valid">Ajouter mon produit</button>
+      </form>
+    </div>
+</div>

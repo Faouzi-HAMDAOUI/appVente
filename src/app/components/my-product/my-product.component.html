@@ -1,0 +1,58 @@
+<mdb-card cascade="true" wider="true" reverse="true" class="my-4">
+    <!--Card image-->
+    <div class="view view-cascade overlay waves-light" mdbWavesEffect>
+      <mdb-card-img src="assets/img/{{product.picture}}"></mdb-card-img>
+      <a>
+        <div class="mask rgba-white-slight"></div>
+      </a>
+    </div>
+    <!--/Card image-->
+  
+    <!-- Card content -->
+    <mdb-card-body cascade="true" class="text-center">
+  
+      <!--Title-->
+      <mdb-card-title>
+        <h4>
+          <strong>{{ product.name }}</strong>
+        </h4>
+      </mdb-card-title>
+  
+      <h5 class="indigo-text">
+        <h5 class="pink-text">
+            
+            <a class="nav-link" data-toggle="tab"  role="tab">
+                <mdb-icon fas icon="hand-holding-usd"></mdb-icon> {{ product.price | currency : 'EUR'}}
+                <button type="button" class="btn btn-danger btn-sm btn-rounded" (click)="showPrice = !showPrice">
+                <i class="fas fa-pencil-alt pr-xl-2 pr-md-0 pr-2"></i>
+            </button>
+            </a>
+          </h5> 
+      </h5>
+     <!-- update price -->
+     <div class="md-form input-group mb-3" *ngIf="showPrice">
+        <div class="input-group-prepend">
+          <button class="btn btn-md btn-primary m-0 px-3" type="button" (click)="onSubmit()" >Valider</button>
+        </div>
+        <input type="text" name="price" [(ngModel)]="product.price" class="form-control" placeholder="" aria-label="modification du mon prix"
+        [(ngModel)]="product.price"
+        #priceProduct="ngModel"
+        [ngClass]="{'is-invalid': priceProduct.errors && priceProduct.touched }"
+        required minlength="1" 
+        >
+        <div [hidden]="!priceProduct.errors?.required" class="invalid-feedback">
+          name is required 
+       </div>
+       <div [hidden]="!priceProduct.errors?.minlength" class="invalid-feedback">
+           Must be at least 2 characters
+        </div>
+      </div>
+      <mdb-card-text>
+        {{ product.description }}
+      </mdb-card-text>
+  
+      <a class="btn-floating btn-lg btn-success"routerLink="/update-product/{{ product.id}}"><i class="fas fa-edit"></i></a>
+      <a type="button" (click)="deleteProduct(id)" class="btn-floating btn-lg btn-danger" ><i class="fas fa-backspace"></i></a>
+    </mdb-card-body>
+  
+  </mdb-card>

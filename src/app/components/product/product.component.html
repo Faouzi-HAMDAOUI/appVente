@@ -1,0 +1,45 @@
+<mdb-card cascade="true" wider="true" reverse="true" class="my-4">
+    <!--Card image-->
+    <div class="view view-cascade overlay waves-light" mdbWavesEffect>
+      <mdb-card-img src="assets/img/{{product.picture}}"></mdb-card-img>
+      <a>
+        <div class="mask rgba-white-slight"></div>
+      </a>
+    </div>
+    <!--/Card image-->
+  
+    <!-- Card content -->
+    <mdb-card-body cascade="true" class="text-center">
+  
+      <!--Title-->
+      <mdb-card-title>
+        <h4>
+          <strong>{{ product.name }}</strong>
+        </h4>
+      </mdb-card-title>
+  
+      <h5 class="indigo-text">
+        <h5 class="pink-text">
+            <mdb-icon fas icon="hand-holding-usd"></mdb-icon> {{ product.price | currency : 'EUR'}}
+          </h5>
+      </h5>
+  
+      <mdb-card-text>
+        {{ product.description }}
+      </mdb-card-text>
+  
+      <!--Linkedin-->
+      <a class="px-2 icons-sm li-ic">
+        <mdb-icon fab icon="linkedin-in"> </mdb-icon>
+      </a>
+      <!--Twitter-->
+      <a class="px-2 icons-sm tw-ic">
+        <mdb-icon fab icon="twitter"> </mdb-icon>
+      </a>
+      <!--Dribbble-->
+      <a class="px-2 icons-sm fb-ic">
+        <mdb-icon fab icon="facebook-f"> </mdb-icon>
+      </a>
+    </mdb-card-body>
+  
+  </mdb-card>
